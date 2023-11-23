@@ -1,0 +1,58 @@
+[
+    {
+        "id" : 1,
+        "DoctorId": 1,
+        "appointmentDate" : "12-10-2023",
+        "symptoms" : "Kejang Kejang, batuk Parah, muntah darah",
+        "PatientId" : 4
+    },
+    {
+        "id" : 2,
+        "DoctorId": 2,
+        "appointmentDate" : "13-10-2023",
+        "symptoms" : "Demam, pilek, batuk",
+        "PatientId" : 3
+    },
+    {
+        "id" : 3,
+        "DoctorId": 5,
+        "appointmentDate" : "14-10-2023",
+        "symptoms" : "Kepala Pusing, badan ngilu",
+        "PatientId" : 5
+    },
+    {
+        "id" : 4,
+        "DoctorId": 3,
+        "appointmentDate" : "13-10-2023",
+        "symptoms" : "Perut nyeri, kepala pusing",
+        "PatientId" : 7
+    },
+    {
+        "id" : 5,
+        "DoctorId": 5,
+        "appointmentDate" : "12-10-2023",
+        "symptoms" : "Kulit terasa panas, kulit terasa gatal",
+        "PatientId" : 1
+    },
+    {
+        "id" : 6,
+        "DoctorId": 3,
+        "appointmentDate" : "12-10-2023",
+        "symptoms" : "Batuk parah, pusing kepala",
+        "PatientId" : 6
+    },
+    {
+        "id" : 7,
+        "DoctorId": 6,
+        "appointmentDate" : "12-10-2023",
+        "symptoms" : "Mata ngilu, tubuh terasa capek",
+        "PatientId" : 8
+    },
+    {
+        "id" : 8,
+        "DoctorId": 3,
+        "appointmentDate" : "12-10-2023",
+        "symptoms" : "Suhu tinggi, kondisi tubuh tidak vit",
+        "PatientId" : 2
+    }
+]

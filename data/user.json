@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "username": "doctor1",
+    "password": "password1",
+    "role": "Doctor",
+    "email": "doctor1@example.com"
+  },
+  {
+    "id": 2,
+    "username": "doctor2",
+    "password": "password2",
+    "role": "Doctor",
+    "email": "doctor2@example.com"
+  },
+  {
+    "id": 3,
+    "username": "doctor3",
+    "password": "password3",
+    "role": "Doctor",
+    "email": "doctor3@example.com"
+  },
+  {
+    "id": 4,
+    "username": "doctor4",
+    "password": "password4",
+    "role": "Doctor",
+    "email": "doctor4@example.com"
+  },
+  {
+    "id": 5,
+    "username": "doctor5",
+    "password": "password5",
+    "role": "Doctor",
+    "email": "doctor5@example.com"
+  },
+  {
+    "id": 6,
+    "username": "doctor6",
+    "password": "password6",
+    "role": "Doctor",
+    "email": "doctor6@example.com"
+  },
+  {
+    "id": 7,
+    "username": "patient1",
+    "password": "password1",
+    "role": "Patient",
+    "email": "patient1@example.com"
+  },
+  {
+    "id": 8,
+    "username": "patient2",
+    "password": "password2",
+    "role": "Patient",
+    "email": "patient2@example.com"
+  },
+  {
+    "id": 9,
+    "username": "patient3",
+    "password": "password3",
+    "role": "Patient",
+    "email": "patient3@example.com"
+  },
+  {
+    "id": 10,
+    "username": "patient4",
+    "password": "password4",
+    "role": "Patient",
+    "email": "patient4@example.com"
+  },
+  {
+    "id": 11,
+    "username": "patient5",
+    "password": "password5",
+    "role": "Patient",
+    "email": "patient5@example.com"
+  },
+  {
+    "id": 12,
+    "username": "patient6",
+    "password": "password6",
+    "role": "Patient",
+    "email": "patient6@example.com"
+  },
+  {
+    "id": 13,
+    "username": "patient7",
+    "password": "password7",
+    "role": "Patient",
+    "email": "patient7@example.com"
+  },
+  {
+    "id": 14,
+    "username": "patient8",
+    "password": "password8",
+    "role": "Patient",
+    "email": "patient8@example.com"
+  }
+]

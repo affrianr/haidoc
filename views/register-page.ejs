@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="container" style="padding: 2% 20%;">
+        <h1>Register New Account</h1>
+            <form action="/register" method="post">
+            <!-- StartUp Name  -->
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <!-- Founder Name -->
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <!-- Education of Founder -->
+            <label for="exampleFormControlInput1" class="form-label">Role</label>
+            <select class="form-select" name="role">
+                <option selected disabled>Open this select menu</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Patient">Patient</option>
+            </select>
+            <br>
+            <!-- Role of Founder -->
+              <!--  -->
+              <br>
+              <button type="submit" class="btn btn-outline-secondary">Submit</button>
+              <a class="btn btn-outline-secondary" href="/">Cancel</a>
+            </form>
+        </div>
+</body>
+</html>

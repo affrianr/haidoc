@@ -1,0 +1,62 @@
+[
+    {
+        "id" : 1,
+        "name" : "Sutrisno",
+        "gender": "male",
+        "phone_number" : "109873654",
+        "speciality" : "Spesialis Anak",
+        "address" : "Jl. Madura no 99",
+        "profile_picture" : "https://jasaweb.jasapremium.com/wp-content/uploads/2021/04/Male-doctor-smiling-portrait-close-up-Med-Res-72991363.jpg",
+        "UserId" : 1
+    },
+    {
+        "id" : 2,
+        "name" : "Wijaya",
+        "gender": "male",
+        "phone_number" : "1989889",
+        "speciality" : "Spesialis Bedah",
+        "address" : "Jl. surabaya no 99",
+        "profile_picture" : "https://th.bing.com/th/id/OIP.zZObBKasLzkuSEoFXEU7EwAAAA?rs=1&pid=ImgDetMain",
+        "UserId" : 2
+    },
+    {
+        "id" : 3,
+        "name" : "Angel",
+        "gender": "female",
+        "phone_number" : "5677764",
+        "speciality" : "Spesialis Penyakit Dalam",
+        "address" : "Jl. jember no 99",
+        "profile_picture" : "https://img.okezone.com/content/2017/07/29/337/1746158/dokter-cantik-ini-bikin-netizen-klepek-klepek-sampai-minta-disuntik-nDvr9OFWas.JPG",
+        "UserId" : 3
+    },
+    {
+        "id" : 4,
+        "name" : "Bukaw",
+        "gender": "male",
+        "phone_number" : "877654",
+        "speciality" : "Spesialis mata",
+        "address" : "Jl. Jawa no 99",
+        "profile_picture" : "https://th.bing.com/th/id/OIP.FVkGRjTgVBomIGGF90rLZQHaLu?w=1067&h=1690&rs=1&pid=ImgDetMain",
+        "UserId" : 4
+    },
+    {
+        "id" : 5,
+        "name" : "Wahyu",
+        "gender": "male",
+        "phone_number" : "19982753",
+        "speciality" : "Spesialis saraf",
+        "address" : "Jl. Buntu no 99",
+        "profile_picture" : "https://thumbs.dreamstime.com/b/jonge-dokter-met-gekruiste-handen-39384711.jpg",
+        "UserId" : 5
+    },
+    {
+        "id" : 6,
+        "name" : "Yuni",
+        "gender": "female",
+        "phone_number" : "7635183",
+        "speciality" : "Spesialis kulit dan kelamin",
+        "address" : "Jl. Bandung no 99",
+        "profile_picture" : "https://png.pngtree.com/background/20211215/original/pngtree-physician-female-doctor-standing-indoors-during-the-day-picture-image_1485776.jpg",
+        "UserId" : 6
+    }
+]

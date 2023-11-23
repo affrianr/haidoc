@@ -1,0 +1,126 @@
+Langkah-langkah sequelize:
+=== setting up ===
+npm init -y
+npm install ejs express pg sequelize
+.gitigonre > node_modules
+
+=== migration ===
+https://sequelize.org/docs/v6/other-topics/migrations/
+npm install -D sequelize-cli
+npx sequelize-cli init / npx sequelize init
+npx sequelize --help >>>>> kalau butuh list command
+
+- setelah ini setting db di file config.json —
+npx sequelize db:create
+npx sequelize model:generate --name Person --attributes name:string,age:integer,heightMe:float,weight:float,address:text,married:boolean
+npx sequelize db:migrate
+
+<aside>
+💡 creating foreign key on migration : https://sequelize.org/v5/manual/migrations.html
+
+</aside>
+
+=== custom migration ===
+https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface
+-- rename column --
+npx sequelize migration:create --name rename-heightMe-to-height
+public async renameColumn(tableName: string, attrNameBefore: string, attrNameAfter: string, options: object): Promise
+
+- up rename colum: "columnBefore", "columnAfter" >
+- down rename column: "columnAfter", "columnBefore"
+
+<aside>
+💡 rename column with constraint and index : https://stackoverflow.com/questions/47755293/sequelize-rename-column-with-index-constraint
+
+</aside>
+
+npx sequelize db:migrate
+
+-- add column --
+npx sequelize migration:create --name create-column-gender
+public async addColumn(table: string, key: string, attribute: object, options: object): Promise
+
+- up > await queryInterface.addColumn("People", "gender", Sequelize.STRING)
+- down > await queryInterface.remove("People", "gender")
+
+<aside>
+💡 tambah ketika sebelum db:migrate, cara buat foreign key: https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface#instance-method-createTable
+
+</aside>
+
+npx sequelize db:migrate
+
+<aside>
+💡 jangan lupa untuk ubah/tambah key di model.js ketika melakukan migration tambahan
+
+</aside>
+
+=== seeding ===
+npx sequelize seed:create --name seed-People
+
+hapus [el.id](http://el.id/), tambah el.createdAt dan el.updatedAt
+
+npx sequelize db:seed:all
+
+untuk menjalankan file seed secara spesifik:
+
+==========
+
+selanjutnya kerjakan seperti biasa,
+app.js
+controller
+
+<aside>
+💡 Operator Matematika : https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#operators
+
+</aside>
+
+=============
+
+pada level aplikasi, harus dilakukan penambahan associate (pada models) sesuai dengah relasi tiap tabel
+
+>> tambah foreign key 
+
+> hasOne - adds a foreign key to the target and singular association mixins to the source.
+> 
+
+> belongsTo - add a foreign key and singular association mixins to the source.
+> 
+
+> hasMany - adds a foreign key to target and plural association mixins to the source.
+> 
+
+> belongsToMany - creates an N:M association with a join table and adds plural association mixins to the source. The junction table is created with sourceId and targetId.
+> 
+
+biar lebih aman walau sudah pakai PascalCase
+
+<aside>
+💡 creating instance with associations: https://medium.com/@codingnotes/how-to-create-instances-with-associations-in-sequelize-6664cb9fb984, https://stackoverflow.com/questions/61301782/sequelize-foreign-key-with-association
+
+</aside>
+
+https://sequelize.org/api/v6/class/src/associations/base.js~association#
+
+========================================================
+
+> HOOKS
+> 
+
+https://sequelize.org/docs/v6/other-topics/hooks/#declaring-hooks
+
+https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/
+
+kalau pakai getter di dalam class itu sendiri, pakai this.key sama halnya dengan ambil param lain untuk dipakai di validasi
+
+<aside>
+💡 partial ejs : https://stackoverflow.com/questions/5404830/node-js-ejs-including-a-partial
+
+</aside>
+
+https://medium.com/@JasonAndermonn/sequelize-cheatsheet-7a5de1034378
+
+<aside>
+💡 cara mengubah key/attributes https://stackoverflow.com/questions/32649218/how-do-i-select-a-column-using-an-alias
+
+</aside>

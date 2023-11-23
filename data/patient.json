@@ -1,0 +1,58 @@
+[ 
+    {
+        "id" : 1,
+        "name" : "Kiki",
+        "phone_number" : "67563746",
+        "address" : "Bukit Selatan no 16",
+        "UserId" : 7
+    },
+    {
+        "id" : 2,
+        "name" : "Koko",
+        "phone_number" : "16367542",
+        "address" : "Bukit Utara no 35",
+        "UserId" : 8
+    },
+    {
+        "id" : 3,
+        "name" : "Keke",
+        "phone_number" : "51636541",
+        "address" : "Bukit Barat no 16",
+        "UserId" : 9
+    },
+    {
+        "id" : 4,
+        "name" : "Boboiboy",
+        "phone_number" : "53241344",
+        "address" : "Gunung Everest no 167",
+        "UserId" : 10
+    },
+    {
+        "id" : 5,
+        "name" : "Gopal",
+        "phone_number" : "12553744",
+        "address" : "Gunung Kidul no 16",
+        "UserId" : 11
+    },
+    {
+        "id" : 6,
+        "name" : "Naruto",
+        "phone_number" : "5173648",
+        "address" : "Gedang Selatan no 99",
+        "UserId" : 12
+    },
+    {
+        "id" : 7,
+        "name" : "Sasuka",
+        "phone_number" : "56483713",
+        "address" : "Gunung everest no 78",
+        "UserId" : 13
+    },
+    {
+        "id" : 8,
+        "name" : "Goku",
+        "phone_number" : "53241344",
+        "address" : "jl Gebang no 16",
+        "UserId" : 14
+    }
+]
