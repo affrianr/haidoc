@@ -1,10 +1,10 @@
 const { User, Doctor, Patient } =  require('../models')
 const bcrypt = require('bcryptjs');
 class Controller {
-
     static async home(req, res){
         try {
-            res.render('home')
+            let data = await Doctor.findAll()
+            res.render('home', {data})
         } catch (error) {
             console.log(error)
             res.send(error)

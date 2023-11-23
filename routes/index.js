@@ -3,7 +3,7 @@ const UserController = require('../controllers/UserController')
 const DoctorController = require('../controllers/DoctorController');
 const PatientController = require('../controllers/PatientController');
 
-router.get('/', UserController.home)
+router.get('/home', UserController.home)
 router.get('/register', UserController.registerForm)
 router.post('/register', UserController.registerPost)
 router.get('/register/doctor/:id', UserController.registerDoctorForm)
@@ -42,6 +42,9 @@ const isPatient = function(req, res, next){
 }
 
 // doctor
+router.get('/post', DoctorController.post)
+router.get('/post/postDetail/:id', DoctorController.postDetail)
+router.get('/listDoctor', DoctorController.listDoctor)
 router.get('/doctor/:id', isLoggedin, isDoctor, DoctorController.home)
 router.get('/doctor/:id/update-profile', isLoggedin, isDoctor, DoctorController.updateProfileForm )
 router.post('/doctor/:id/update-profile', isLoggedin, isDoctor, DoctorController.updateProfilePost )

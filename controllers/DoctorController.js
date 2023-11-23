@@ -12,6 +12,35 @@ class Controller {
         }
     }
 
+    static async post(req, res){
+        try {
+            let data = await Post.findAll()
+            res.render('post', {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async postDetail(req, res){
+        try {
+            let {id} = req.params
+            let data = await Post.findByPk(id)
+            res.render('postDetail', {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async listDoctor(req, res){
+        try {
+            
+            let data = await Doctor.findAll()
+            res.render('listDoctor', {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
     static async updateProfileForm(req, res){
         try {
             let { id } = req.params

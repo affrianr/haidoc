@@ -66,7 +66,7 @@ class Controller {
         try {
             let { id } = req.params
             let { doctorId } = req.params
-            res.render('patient-appoinment-form', { id, doctorId})
+            res.render('patient-appointment-form', { id, doctorId})
         } catch (error) {
             console.log(error)
             res.send(error)
