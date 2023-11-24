@@ -1,5 +1,5 @@
-const { Doctor, Patient, Appointment } = require('../models')
-
+const { Doctor, Patient, Appointment, Post } = require('../models')
+const calculate = require('fitness-health-calculations');
 
 class Controller {
     static async home(req, res){
@@ -14,10 +14,9 @@ class Controller {
 
     static async updateProfileForm(req, res){
         try {
-            let UserId = req.session.userId
             let { id } = req.params
             let data = await Patient.findByPk(id)
-            res.render('patient-update-profile', { data })
+            res.render('patient-update-profile', { data, id })
         } catch (error) {
             console.log(error)
             res.send(error)
@@ -30,7 +29,7 @@ class Controller {
             let { id } = req.params
             let patient = await Patient.findByPk(id)
             let { name, phone_number, address } = req.body
-            await Doctor.update({ name, phone_number, address }, {
+            await Patient.update({ name, phone_number, address }, {
                 where : {
                     UserId
                 }
@@ -66,7 +65,8 @@ class Controller {
         try {
             let { id } = req.params
             let { doctorId } = req.params
-            res.render('patient-appoinment-form', { id, doctorId})
+            let doctor = await Doctor.findByPk(doctorId)
+            res.render('patient-appointment-form', { id, doctor})
         } catch (error) {
             console.log(error)
             res.send(error)
@@ -77,9 +77,9 @@ class Controller {
         try {
             let PatientId = req.params.id
             let DoctorId = req.params.doctorId
-            let {appointmentDate} = req.body
+            let {appointmentDate, symptoms} = req.body
             
-            await Appointment.create({PatientId, DoctorId, appointmentDate})
+            await Appointment.create({PatientId, DoctorId, appointmentDate, symptoms})
             res.redirect(`/patient/${PatientId}/doctor-list`)
         } catch (error) {
             let {id} = req.params
@@ -97,7 +97,9 @@ class Controller {
     static async appointmentList(req, res){
         try {
             let { id } = req.params
-            let appoinment = await Appointment.findAll({
+            let {doctor, date} = req.query
+
+            let appointment = await Appointment.findAll({
                 include : [
                     { model : Doctor }
                 ],
@@ -105,32 +107,40 @@ class Controller {
                     PatientId : id
                 }
             })
-
-            res.render('patient-appoinment', { appoinment })
+            // console.log(appointment.dataValues)
+            res.render('patient-appointment', { appointment, doctor, date, id})
         } catch (error) {
             console.log(error)
             res.send(error)
         }
     }
 
-    static async appoinmentDelete(req, res){
+    static async postDetail(req, res){
         try {
-            let { id } = req.params
-            await Appointment.destroy({
-                where : {
-                PatientId : id
-                }
-            })
-            res.redirect(`back`)
+            let {id} = req.params
+            let data = await Post.findByPk(id)
+            res.render('post-detail', {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async postList(req, res){
+        try {
+            let data = await Post.findAll()
+            res.render('patient-post-list', { data })
         } catch (error) {
             console.log(error)
             res.send(error)
         }
     }
+
     
     static async calorieForm(req, res){
         try {
-            res.render('calorie-need')
+            let { id } = req.params
+            let { result } = req.query
+            res.render('calorie-need', { id, result })
         } catch (error) {
             console.log(error)
             res.send(error)
@@ -139,11 +149,39 @@ class Controller {
 
     static async calorieNeed(req, res){
         try {
-            let { gender, age, height, weight, activity_level, goal, approach } = req.body
+            let { gender, age, height, weight, activity_level, goal } = req.body
+            let gender1 = gender
+            let age1 = +age
+            let height1 = +height
+            let weight1 = +weight
+            let activ = activity_level
+            let goal1 = goal
+            let totalCaloricNeeds = calculate.caloricNeeds(gender1,age1,height1,weight1,activ, goal1)
 
-            let totalCaloricNeeds = calculate.caloricNeeds({ gender, age, height, weight, activity_level, goal, approach })
+            res.redirect(`/patient/:id/calorie?result=${totalCaloricNeeds}`)
+        } catch (error) {
+            console.log(error)
+            res.send(error)
+        }
+    }
 
-            res.redirect(`/patient/:id/calorie?resutl=${totalCaloricNeeds}`)
+    static async deleteAppointment(req, res){
+        try {
+            let {id} = req.params
+            let { doctorId } = req.params
+            let deleted = await Appointment.findOne({
+                where: {
+                    DoctorId : +doctorId
+                },
+                include : Doctor
+            })
+            await Appointment.destroy({
+                where : {
+                    DoctorId: +doctorId
+                }
+            })
+            console.log(deleted)
+            res.redirect(`/patient/${id}/appointment?doctor=${deleted.Doctor.name}&date=${deleted.appointmentDate}`)
         } catch (error) {
             console.log(error)
             res.send(error)

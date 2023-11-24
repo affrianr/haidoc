@@ -1,5 +1,5 @@
 const { Doctor, Patient, Appointment, Post } = require('../models')
-const calculate = require('fitness-health-calculations');
+
 
 class Controller {
     static async home(req, res){
@@ -16,7 +16,7 @@ class Controller {
         try {
             let { id } = req.params
             let data = await Doctor.findByPk(id)
-            res.render('doctor-update-profile', { data })
+            res.render('doctor-update-profile', { data, id })
         } catch (error) {
             console.log(error)
             res.send(error)
@@ -49,7 +49,7 @@ class Controller {
 
     static async appointmentList(req, res){
         try {
-            let UserId = req.session.userId
+            let {patient, date } = req.query
             let { id } = req.params
             let appointment = await Appointment.findAll({
                 include : [
@@ -61,7 +61,30 @@ class Controller {
             })
             // res.send(appointment)
             // console.log(appointment)
-            res.render('doctor-appointment', { appointment })
+            res.render('doctor-appointment', { appointment, patient, date, id })
+        } catch (error) {
+            console.log(error)
+            res.send(error)
+        }
+    }
+
+    static async deleteAppointment(req, res){
+        try {
+            let {id} = req.params
+            let {appointmentId} = req.params
+            let deleted = await Appointment.findOne({
+                where: {
+                    id : +appointmentId
+                },
+                include : Patient
+            })
+            await Appointment.destroy({
+                where : {
+                    id : +appointmentId
+                }
+            })
+            console.log(deleted)
+            res.redirect(`/doctor/${id}/appointment?patient=${deleted.Patient.name}&date=${deleted.appointmentDate}`)
         } catch (error) {
             console.log(error)
             res.send(error)
@@ -93,6 +116,48 @@ class Controller {
                 console.log(error)
                 res.send(error)
             }
+        }
+    }
+
+    static async postDetail(req, res){
+        try {
+            let {id} = req.params
+            let data = await Post.findByPk(id)
+            res.render('post-detail', {data, id})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async deletePost(req, res){
+        try {
+            let {id} = req.params
+            let {postId} = req.params
+            let data = await Post.findByPk(postId)
+            await Post.destroy({
+                where : {
+                    id: +postId
+                }
+            })
+            res.redirect(`/doctor/${id}/post-list`)
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async postList(req, res){
+        try {
+            let id = +req.params.id
+            let data = await Post.findAll({
+                where : {
+                    DoctorId : +id
+                }
+            })
+
+            res.render('doctor-post-list', { data, id })
+        } catch (error) {
+            console.log(error)
+            res.send(error)
         }
     }
 

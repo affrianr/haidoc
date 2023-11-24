@@ -1,4 +1,4 @@
-const { User, Doctor, Patient } =  require('../models')
+const { User, Doctor, Patient, Post } =  require('../models')
 const bcrypt = require('bcryptjs');
 class Controller {
 
@@ -24,8 +24,8 @@ class Controller {
     static async registerPost(req, res){
         try {
 
-            let { username, password, role } = req.body
-            await User.create( { username, password, role })
+            let { username, email, password, role } = req.body
+            await User.create( { username, email, password, role })
             let user = await User.findOne( { where : {username : username}})
 
             if(role === "Doctor"){
@@ -154,6 +154,25 @@ class Controller {
         }
     }
 
+    static async postList(req, res){
+        try {
+            let data = await Post.findAll()
+            res.render('post', { data })
+        } catch (error) {
+            console.log(error)
+            res.send(error)
+        }
+    }
+
+    static async postDetail(req, res){
+        try {
+            let {id} = req.params
+            let data = await Post.findByPk(id)
+            res.render('post-detail', {data})
+        } catch (error) {
+            res.send(error)
+        }
+    }
     
 
     static async logout(req, res){

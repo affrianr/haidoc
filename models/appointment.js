@@ -54,12 +54,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         notNull: {
           msg: `Date is required`
-        },
-        isAfter : new Date()
+        }
+        // isAfter : new Date()
       }
     },
     symptoms: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: {

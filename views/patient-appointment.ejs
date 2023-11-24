@@ -7,8 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+  <%-  include('navbar-patient') %>
     <div style="padding: 4rem 10rem;">
-      <h2><%= appointment[0].Doctor.name %></h2>
+      <% if(doctor){ %>
+        <p style="color: red;">You have been canceled appointment with Doctor <%= doctor %> at <%= date %></p>
+      <% } %>
         <table class="table">
             <thead>
               <tr>
@@ -23,9 +26,10 @@
               <% appointment.forEach((el, i) => { %>
                 <tr>
                   <th scope="row"><%= i + 1 %></th>
-                  <td><%= el.Patient.name %></td>
-                  <td><%= el.symptoms %></td>
+                  <td><%= el.Doctor.name %></td>
+                  <td><%= el.Doctor.phone_number %></td>
                   <td><%= el.localDate %></td>
+                  <td><a class="btn btn-warning" href="/patient/<%= el.PatientId %>/appointment/<%= el.DoctorId %>/delete/">Cancel</a></td>
                 </tr>
               <% }) %>
             </tbody>
